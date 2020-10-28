@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Angular demo</title>
+    <script src="bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+    <div class="guesses">
+        Guesses Left<br/>{{tries}}
+    </div>
+
+    <div class="word">Guess the word <br>{{displayWord}}</div>
+
+    <div class="letters">
+        <p class="correctLet">
+            Correct Letters <br> <span ng-repeat="letter in correctLetters">{{letter}},</span>
+        </p>
+        <p class="incorrecetLet">
+            False Letters <br> <span ng-repeat="letter in incorrectLetters">{{letter}},</span>
+        </p>
+    </div>
+
+
+    <div class="input">
+        <input class="textfield" type="text" ng-model="userInput"> <br/>
+        <button class="button" ng-click="letterCheck()">Submit</button>
+    </div>
+</body>
+
+</html>

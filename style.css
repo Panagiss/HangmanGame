@@ -1,0 +1,71 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(hangman.jpeg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+div.guesses {
+    height: auto;
+    width: auto;
+    margin: auto;
+    padding-top: 5%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 60px;
+}
+
+div.letter {
+    margin-top: 10%;
+}
+
+p.correctLet {
+    height: auto;
+    width: auto;
+    margin: auto;
+    margin-right: 1%;
+    float: right;
+    color: greenyellow;
+    font-size: 60px;
+}
+
+p.incorrecetLet {
+    height: auto;
+    width: auto;
+    margin: auto;
+    margin-left: 1%;
+    float: left;
+    color: crimson;
+    font-size: 60px;
+}
+
+div.word {
+    height: auto;
+    width: auto;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+div.input {
+    height: auto;
+    width: auto;
+    text-align: center;
+    margin-top: 10%;
+}
+
+input.textfield {
+    background-color: teal;
+    width: 10%;
+    color: seashell;
+}
+
+button.button {
+    margin: 1%;
+    background-color: yellow;
+}
