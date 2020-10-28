@@ -1,96 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-var randomWords = require('random-words');
-var angular = require('angular');
-
-angular.module("myApp", []).controller("myController", function($scope, $timeout) {
-
-    var words = randomWords(50);
-    console.log(words);
-    var chosenWord;
-
-    $scope.incorrectLetters;
-    $scope.correctLetters;
-    $scope.tries;
-    $scope.displayWord;
-    $scope.userInput;
-
-    var choseFunction = () => {
-        var i = Math.round(Math.random() * words.length);
-        if (i == words.length) {
-            i--;
-        }
-        console.log(i)
-        return words[i];
-    }
-
-    var startGame = () => {
-        $scope.incorrectLetters = [];
-        $scope.correctLetters = [];
-        $scope.displayWord;
-        $scope.tries = 6;
-
-
-        chosenWord = choseFunction();
-        console.log(chosenWord);
-
-        var tmpWord = '';
-        for (let index = 0; index < chosenWord.length; index++) {
-            tmpWord += '*';
-        }
-        $scope.displayWord = tmpWord;
-    }
-
-    $scope.letterCheck = () => {
-        if ($scope.userInput.length > 1) {
-            alert("Only 1 letter at a time");
-            $scope.userInput = "";
-            return;
-        } else if ($scope.userInput.length == 0) {
-            return;
-        }
-        for (var i = 0; i < $scope.correctLetters.length; i++) {
-            if ($scope.correctLetters[i].toLowerCase() == $scope.userInput.toLowerCase()) {
-                $scope.userInput = "";
-                alert('Letter already chosen');
-                return;
-            }
-        }
-        for (var i = 0; i < $scope.incorrectLetters.length; i++) {
-            if ($scope.incorrectLetters[i].toLowerCase() == $scope.userInput.toLowerCase()) {
-                $scope.userInput = "";
-                alert('Letter already chosen');
-                return;
-            }
-        }
-        var flag = false;
-        for (let l = 0; l < chosenWord.length; l++) {
-            if (chosenWord[l].toLowerCase() == $scope.userInput.toLowerCase()) {
-                $scope.displayWord = $scope.displayWord.slice(0, l) + $scope.userInput.toLowerCase() + $scope.displayWord.slice(l + 1);
-                flag = true;
-            }
-        }
-        if (flag) {
-            $scope.correctLetters.push($scope.userInput.toLowerCase());
-        } else {
-            $scope.tries--;
-            $scope.incorrectLetters.push($scope.userInput.toLowerCase());
-        }
-        $scope.userInput = "";
-
-        if ($scope.tries == 0) {
-            //Lost
-            $timeout(() => startGame(), 500);
-        }
-        if ($scope.displayWord.indexOf("*") == -1) {
-            // Won
-            $timeout(() => startGame(), 500);
-        }
-
-    }
-    startGame();
-
-});
-},{"angular":3,"random-words":4}],2:[function(require,module,exports){
 /**
  * @license AngularJS v1.8.2
  * (c) 2010-2020 Google LLC. http://angularjs.org
@@ -36691,11 +36599,11 @@ $provide.value("$locale", {
 })(window);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend(window.angular.element('<style>').text('@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}'));
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":2}],4:[function(require,module,exports){
+},{"./angular":1}],3:[function(require,module,exports){
 var wordList = [
   // Borrowed from xkcd password generator which borrowed it from wherever
   "ability","able","aboard","about","above","accept","accident","according",
@@ -37037,4 +36945,96 @@ module.exports = words;
 // Export the word list as it is often useful
 words.wordList = wordList;
 
-},{}]},{},[1]);
+},{}],4:[function(require,module,exports){
+var randomWords = require('random-words');
+var angular = require('angular');
+
+angular.module("myApp", []).controller("myController", function($scope, $timeout) {
+
+    var words = randomWords(50);
+    console.log(words);
+    var chosenWord;
+
+    $scope.incorrectLetters;
+    $scope.correctLetters;
+    $scope.tries;
+    $scope.displayWord;
+    $scope.userInput;
+
+    var choseFunction = () => {
+        var i = Math.round(Math.random() * words.length);
+        if (i == words.length) {
+            i--;
+        }
+        console.log(i)
+        return words[i];
+    }
+
+    var startGame = () => {
+        $scope.incorrectLetters = [];
+        $scope.correctLetters = [];
+        $scope.displayWord;
+        $scope.tries = 6;
+
+
+        chosenWord = choseFunction();
+        console.log(chosenWord);
+
+        var tmpWord = '';
+        for (let index = 0; index < chosenWord.length; index++) {
+            tmpWord += '*';
+        }
+        $scope.displayWord = tmpWord;
+    }
+
+    $scope.letterCheck = () => {
+        if ($scope.userInput.length > 1) {
+            alert("Only 1 letter at a time");
+            $scope.userInput = "";
+            return;
+        } else if ($scope.userInput.length == 0) {
+            return;
+        }
+        for (var i = 0; i < $scope.correctLetters.length; i++) {
+            if ($scope.correctLetters[i].toLowerCase() == $scope.userInput.toLowerCase()) {
+                $scope.userInput = "";
+                alert('Letter already chosen');
+                return;
+            }
+        }
+        for (var i = 0; i < $scope.incorrectLetters.length; i++) {
+            if ($scope.incorrectLetters[i].toLowerCase() == $scope.userInput.toLowerCase()) {
+                $scope.userInput = "";
+                alert('Letter already chosen');
+                return;
+            }
+        }
+        var flag = false;
+        for (let l = 0; l < chosenWord.length; l++) {
+            if (chosenWord[l].toLowerCase() == $scope.userInput.toLowerCase()) {
+                $scope.displayWord = $scope.displayWord.slice(0, l) + $scope.userInput.toLowerCase() + $scope.displayWord.slice(l + 1);
+                flag = true;
+            }
+        }
+        if (flag) {
+            $scope.correctLetters.push($scope.userInput.toLowerCase());
+        } else {
+            $scope.tries--;
+            $scope.incorrectLetters.push($scope.userInput.toLowerCase());
+        }
+        $scope.userInput = "";
+
+        if ($scope.tries == 0) {
+            //Lost
+            $timeout(() => startGame(), 500);
+        }
+        if ($scope.displayWord.indexOf("*") == -1) {
+            // Won
+            $timeout(() => startGame(), 500);
+        }
+
+    }
+    startGame();
+
+});
+},{"angular":2,"random-words":3}]},{},[4]);
