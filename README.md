@@ -9,4 +9,4 @@ Then copy and paste the path of **index.html** file to your browser and that's i
 This is an unfinished alpha build of the game. It doesn't keep your score and it may have bugs. If you find bug/exploit please report it to the creator.
 
 # Play
-If you just want to test it you will find here : [HangmanGame] (https://the-hangman-game.glitch.me/)
+If you just want to test it you will find here : [HangmanGame](https://the-hangman-game.glitch.me/)
