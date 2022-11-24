@@ -14,6 +14,6 @@
     },
     "dependencies": {
         "angular": "^1.8.2",
-        "random-words": "^1.1.1"
+        "random-words": "^1.2.0"
     }
 }
